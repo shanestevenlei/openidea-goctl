@@ -1,0 +1,6 @@
+id = "api"
+name = "go-zero API"
+extensions = ["api"]
+line-comment = "//"
+block-comment = ["/*", "*/"]
+indent = { tab-size = 4, insert-spaces = true }

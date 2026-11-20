@@ -1,0 +1,109 @@
+id = "shanestevenlei.goctl"
+name = "OpenIDEA Goctl"
+version = "0.1.0"
+description = "Edit go-zero .api files and generate Go services with goctl."
+authors = ["shanestevenlei"]
+license = "MIT"
+categories = ["languages", "tools"]
+engines.openidea = "^1.13"
+wasm = "dist/plugin.wasm"
+icon = "icons/gozero.svg"
+icon-dark = "icons/gozero_dark.svg"
+activation = ["on-language:api", "on-language:gotpl", "on-command:generate-api-go", "on-command:generate-zrpc", "on-command:generate-tpl-copy"]
+
+[capabilities]
+required = ["project.read", "process:goctl"]
+
+[contributes.settings]
+title = "OpenIDEA Goctl"
+schema = "settings.schema.json"
+
+[[contributes.languages]]
+path = "languages/api.toml"
+
+[[contributes.languages]]
+path = "languages/gotpl.toml"
+
+[[contributes.fileIcons]]
+id = "api"
+patterns = ["*.api"]
+icon = "icons/gozero.svg"
+iconDark = "icons/gozero_dark.svg"
+
+[[contributes.fileIcons]]
+id = "gozero-proto"
+patterns = ["*.proto"]
+icon = "icons/gozero.svg"
+iconDark = "icons/gozero_dark.svg"
+
+[[contributes.snippets]]
+language = "api"
+path = "snippets/api.json"
+
+[[contributes.fileTemplates]]
+id = "api-file"
+name = "go-zero API File"
+extension = "api"
+path = "templates/api.api"
+
+[[contributes.fileTemplates]]
+id = "api-empty"
+name = "go-zero API File (empty)"
+extension = "api"
+path = "templates/api-empty.api"
+
+[[contributes.fileTemplates]]
+id = "proto-file"
+name = "go-zero gRPC Proto File"
+extension = "proto"
+path = "templates/service.proto"
+
+[[contributes.providers]]
+kinds = ["diagnostics", "definition", "line-markers"]
+languages = ["api"]
+
+[[contributes.documentIndexers]]
+extensions = ["api"]
+
+[[contributes.markerIcons]]
+id = "references"
+icon = "icons/references.svg"
+markers = ["api:type:"]
+tooltip = "类型引用 — 点击选择跳转"
+
+[[contributes.commands]]
+id = "generate-api-go"
+title = "Goctl: Generate Go from API"
+category = "Goctl"
+
+[[contributes.commands]]
+id = "generate-zrpc"
+title = "Goctl: Generate zRPC from Proto"
+category = "Goctl"
+
+[[contributes.commands]]
+id = "generate-tpl-copy"
+title = "Goctl: Copy Builtin Templates to Folder"
+category = "Goctl"
+
+# Editor context menu: show only while editing the matching language so the
+# entries are never greyed out on an unrelated file.
+[[contributes.menus]]
+menu = "editor.context"
+command = "generate-api-go"
+when = "editorLangId == api"
+
+[[contributes.menus]]
+menu = "editor.context"
+command = "generate-zrpc"
+when = "editorLangId == proto"
+
+# Project-view (file tree) right-click: the command itself validates the
+# extension, so this stays unconstrained and works for a selected `.api`/`.proto`.
+[[contributes.menus]]
+menu = "projectView.context"
+command = "generate-api-go"
+
+[[contributes.menus]]
+menu = "projectView.context"
+command = "generate-zrpc"
