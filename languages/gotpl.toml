@@ -1,0 +1,6 @@
+id = "gotpl"
+name = "go-zero Template"
+extensions = ["tpl"]
+line-comment = "//"
+block-comment = ["/*", "*/"]
+indent = { tab-size = 4, insert-spaces = false }

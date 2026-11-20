@@ -1,0 +1,8 @@
+syntax = "v1"
+
+info (
+	title: "Service"
+	desc: "服务描述"
+	author: "author"
+	version: "v1"
+)

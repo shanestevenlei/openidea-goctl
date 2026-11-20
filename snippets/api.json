@@ -1,0 +1,52 @@
+{
+  "API syntax header": {
+    "prefix": ["syntax"],
+    "body": ["syntax = \"v1\""],
+    "description": "Declare the API syntax version"
+  },
+  "API info block": {
+    "prefix": ["info", "apiinfo"],
+    "body": ["info (", "\ttitle: \"${1:Service}\"", "\tdesc: \"${2:Description}\"", "\tauthor: \"${3:author}\"", "\tversion: \"${4:v1}\"", ")"],
+    "description": "API metadata block"
+  },
+  "Import block": {
+    "prefix": ["import", "apiimport"],
+    "body": ["import \"${1:./shared.api}\""],
+    "description": "Import another .api file"
+  },
+  "Type definition": {
+    "prefix": ["type"],
+    "body": ["type ${1:Name} {", "\t${2:Field} ${3:string} `json:\"${4:field}\"`", "}"],
+    "description": "Define an API request/response type"
+  },
+  "Service block": {
+    "prefix": ["service"],
+    "body": ["@server (", "\tprefix: /${1:api}", "\tgroup: ${2:group}", ")", "service ${3:Service} {", "\t${4:get} /${5:path} (${6:Req}) returns (${7:Resp})", "}"],
+    "description": "Define a service with a route"
+  },
+  "Handler annotation": {
+    "prefix": ["handler"],
+    "body": ["handler: ${1:name}Handler"],
+    "description": "Name the generated handler"
+  },
+  "GET route": {
+    "prefix": ["get"],
+    "body": ["get /${1:path} (${2:Req}) returns (${3:Resp})"],
+    "description": "GET route"
+  },
+  "POST route": {
+    "prefix": ["post"],
+    "body": ["post /${1:path} (${2:Req}) returns (${3:Resp})"],
+    "description": "POST route"
+  },
+  "PUT route": {
+    "prefix": ["put"],
+    "body": ["put /${1:path} (${2:Req}) returns (${3:Resp})"],
+    "description": "PUT route"
+  },
+  "DELETE route": {
+    "prefix": ["delete", "del"],
+    "body": ["delete /${1:path} (${2:Req}) returns (${3:Resp})"],
+    "description": "DELETE route"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "style": {
+      "type": "string",
+      "title": "Naming style",
+      "description": "Naming style passed to goctl as --style.",
+      "enum": ["gozero", "goZero", "go_zero", "GoZero", "GOZERO"],
+      "default": "gozero"
+    },
+    "templateSource": {
+      "type": "string",
+      "title": "Template source",
+      "description": "Where goctl templates come from: builtin (goctl default), local (a directory via --home), or git (a repository via --remote/--branch).",
+      "enum": ["builtin", "local", "git"],
+      "default": "builtin"
+    },
+    "templateHome": {
+      "type": "string",
+      "title": "Local template directory",
+      "description": "Local goctl template directory passed as --home when template source is local.",
+      "default": ""
+    },
+    "templateRemote": {
+      "type": "string",
+      "title": "Git template repository",
+      "description": "Git repository URL passed as --remote when template source is git.",
+      "default": ""
+    },
+    "templateBranch": {
+      "type": "string",
+      "title": "Git template branch",
+      "description": "Optional branch passed as --branch when template source is git.",
+      "default": ""
+    },
+    "goctlVersion": {
+      "type": "string",
+      "title": "goctl version for API checks",
+      "description": "Version used for version-specific .api rules (for example 1.6.4). Leave blank to disable version-dependent checks.",
+      "default": ""
+    }
+  }
+}
